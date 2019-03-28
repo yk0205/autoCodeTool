@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.willow.dao.UpmsLogMapper">
+    <resultMap id="BaseResultMap" type="com.willow.entity.UpmsLog">
+        <id column="log_id" jdbcType="INTEGER" property="logId"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="start_time" jdbcType="BIGINT" property="startTime"/>
+        <result column="spend_time" jdbcType="INTEGER" property="spendTime"/>
+        <result column="base_path" jdbcType="VARCHAR" property="basePath"/>
+        <result column="uri" jdbcType="VARCHAR" property="uri"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="method" jdbcType="VARCHAR" property="method"/>
+        <result column="user_agent" jdbcType="VARCHAR" property="userAgent"/>
+        <result column="ip" jdbcType="VARCHAR" property="ip"/>
+        <result column="permissions" jdbcType="VARCHAR" property="permissions"/>
+    </resultMap>
+   <!-- <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.willow.entity.UpmsLog">
+        <result column="parameter" jdbcType="LONGVARCHAR" property="parameter"/>
+        <result column="result" jdbcType="LONGVARCHAR" property="result"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    log_id, description, username, start_time, spend_time, base_path, uri, url, method,
+    user_agent, ip, permissions
+  </sql>
+    <sql id="Blob_Column_List">
+    parameter, result
+  </sql>-->
+    <insert id="saveUpmsLog" parameterType="com.willow.entity.UpmsLog">
+        insert into upms_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="logId != null">
+                log_id,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="spendTime != null">
+                spend_time,
+            </if>
+            <if test="basePath != null">
+                base_path,
+            </if>
+            <if test="uri != null">
+                uri,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="method != null">
+                method,
+            </if>
+            <if test="userAgent != null">
+                user_agent,
+            </if>
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="permissions != null">
+                permissions,
+            </if>
+            <if test="parameter != null">
+                parameter,
+            </if>
+            <if test="result != null">
+                result,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="logId != null">
+                #{logId,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=BIGINT},
+            </if>
+            <if test="spendTime != null">
+                #{spendTime,jdbcType=INTEGER},
+            </if>
+            <if test="basePath != null">
+                #{basePath,jdbcType=VARCHAR},
+            </if>
+            <if test="uri != null">
+                #{uri,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="method != null">
+                #{method,jdbcType=VARCHAR},
+            </if>
+            <if test="userAgent != null">
+                #{userAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="permissions != null">
+                #{permissions,jdbcType=VARCHAR},
+            </if>
+            <if test="parameter != null">
+                #{parameter,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="result != null">
+                #{result,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateUpmsLog" parameterType="com.willow.entity.UpmsLog">
+        update upms_log
+        <set>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=BIGINT},
+            </if>
+            <if test="spendTime != null">
+                spend_time = #{spendTime,jdbcType=INTEGER},
+            </if>
+            <if test="basePath != null">
+                base_path = #{basePath,jdbcType=VARCHAR},
+            </if>
+            <if test="uri != null">
+                uri = #{uri,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="method != null">
+                method = #{method,jdbcType=VARCHAR},
+            </if>
+            <if test="userAgent != null">
+                user_agent = #{userAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                ip = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="permissions != null">
+                permissions = #{permissions,jdbcType=VARCHAR},
+            </if>
+            <if test="parameter != null">
+                parameter = #{parameter,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="result != null">
+                result = #{result,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where log_id = #{logId,jdbcType=INTEGER}
+    </update>
+
+    <sql id="sql_columns">
+    log_id,description,username,start_time,spend_time,base_path,uri,url,method,user_agent,ip,permissions,parameter,result
+  </sql>
+    <sql id="sql_where">
+        <where>
+            <if test="null != logId">
+                log_id = #{logIdandjdbcType=INTEGER} and
+            </if>
+            <if test="null != description and '' != description">
+                description = #{descriptionandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != username and '' != username">
+                username = #{usernameandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != startTime">
+                start_time = #{startTimeandjdbcType=BIGINT} and
+            </if>
+            <if test="null != spendTime">
+                spend_time = #{spendTimeandjdbcType=INTEGER} and
+            </if>
+            <if test="null != basePath and '' != basePath">
+                base_path = #{basePathandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != uri and '' != uri">
+                uri = #{uriandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != url and '' != url">
+                url = #{urlandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != method and '' != method">
+                method = #{methodandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != userAgent and '' != userAgent">
+                user_agent = #{userAgentandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != ip and '' != ip">
+                ip = #{ipandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != permissions and '' != permissions">
+                permissions = #{permissionsandjdbcType=VARCHAR} and
+            </if>
+            <if test="null != parameter">
+                parameter = #{parameterandjdbcType=LONGVARCHAR} and
+            </if>
+            <if test="null != result">
+                result = #{resultandjdbcType=LONGVARCHAR} and
+            </if>
+        </where>
+    </sql>
+    <select id="selectById"  resultMap="BaseResultMap">
+        select
+        <include refid="sql_columns"/>
+        from upms_log
+        where log_id = #{logId,jdbcType=INTEGER}
+    </select>
+    <select id="selectOne" parameterType="com.willow.entity.UpmsLog" resultMap="BaseResultMap">
+        select
+        <include refid="sql_columns"/>
+        from upms_log
+        <include refid="sql_where"/>
+    </select>
+    <select id="selectList" parameterType="com.willow.entity.UpmsLog" resultMap="BaseResultMap">
+        select
+        <include refid="sql_columns"/>
+        from upms_log
+        <include refid="sql_where"/>
+    </select>
+    <select id="selectPage" parameterType="com.willow.entity.UpmsLog" resultMap="BaseResultMap">
+        select
+        <include refid="sql_columns"/>
+        from upms_log
+        <include refid="sql_where"/>
+        limit #{page.startRow}, #{page.pageSize}
+    </select>
+    <delete id="delArray">
+        delete from upms_log where log_id in
+        <foreach close=")" collection="array" index="index" item="item" open="(" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

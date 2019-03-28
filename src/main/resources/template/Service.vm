@@ -1,0 +1,41 @@
+package ${package_name}.rpc.api;
+
+import ${package_name}.dao.model.${model};
+
+/**
+* ${model}Service接口
+* Created by willow on ${ctime}.
+*/
+public interface ${model}Service {
+
+        /**
+         * 查询
+         * @param ${param}
+         * @return  List<${model}>
+         */
+        public List<${model}> selectList(${model} ${param});
+        /**
+         * 根据ID查询
+         * @param id
+         * @return  ${model}
+         */
+        public ${model}  selectById (Long id);
+        /**
+         * 保存
+         * @param ${param}
+         * @return ${model}
+         */
+        public ${model} save${model} (${model} ${param});
+        /**
+        * 根据ID修改
+        * @param ${param}
+        * @return ${model}
+        */
+        public ${model} update${model} (${model} ${param});
+        /**
+         * 根据ID删除
+         * @param id
+         * @return Long
+         */
+        public Long delete${model} (Long id);
+}
